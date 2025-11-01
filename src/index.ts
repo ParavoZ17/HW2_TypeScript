@@ -56,6 +56,21 @@ console.log(filterOrdersByStatus(orders, "delivered"))
 
 type ProductInfo = [string, number, number];
 
-function updateStock (inventory:[], productInfo: ProductInfo){
-
+interface Inventory {
+  [key: string]: number;
 }
+const inventory: Inventory = 
+    {
+  "Laptop": 5,
+  "Mouse": 10,
+}
+
+
+function updateStock ( inventory: Inventory ,productInfo: ProductInfo): Inventory{
+const [name, , quantity] = productInfo; 
+  const current = inventory[name] || 0;
+  inventory[name] = current + quantity;
+  return inventory;
+}
+
+console.log(updateStock(inventory,["key",22, 5]))
