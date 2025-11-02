@@ -1,10 +1,10 @@
 // 111111111111111111111111111111
 
-import { isJSDocTypeExpression } from "typescript";
+
 
 function calculateTotal (price:number, quantity:number, discount:number = 0 ):number {
-  const total = price * quantity;
-  return total - total * discount; 
+  const total:number = price * quantity - price * quantity*discount;
+  return Number(total.toFixed(2)); 
 }
   
 // 22222222222222222222222222222222222
@@ -45,7 +45,7 @@ const orders : Order[] = [
 ]
 
 function filterOrdersByStatus (orders: Order[], status: OrderStatus): Order[]{
-return orders.filter ((order)=>{ return order.status === status})
+return orders.filter ((order:Order):boolean =>{ return order.status === status})
 }
 
 
@@ -68,7 +68,7 @@ const inventory: Inventory =
 
 function updateStock ( inventory: Inventory ,productInfo: ProductInfo): Inventory{
 const [name, , quantity] = productInfo; 
-  const current = inventory[name] || 0;
+  const current:number = inventory[name] || 0;
   inventory[name] = current + quantity;
   return inventory;
 }
